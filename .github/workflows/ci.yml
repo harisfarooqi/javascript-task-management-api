@@ -53,3 +53,27 @@ jobs:
           context: .
           push: true
           tags: harisfarooqui/task-management-api:latest
+  deploy:
+    needs: docker
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: self-hosted
+
+    steps:
+      - name: Pull Latest Docker Image
+        run: docker pull harisfarooqui/task-management-api:latest
+
+      - name: Stop and Remove Old Container
+        run: docker rm -f task-api-container || true
+
+      - name: Run New Container
+        run: |
+          docker run -d \
+            --name task-api-container \
+            --restart unless-stopped \
+            -p 4000:4000 \
+            harisfarooqui/task-management-api:latest
+
+      - name: Verify API
+        run: |
+          sleep 5
+          curl --fail http://localhost:4000/health
