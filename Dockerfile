@@ -11,8 +11,7 @@ COPY package*.json ./
 RUN npm ci --omit=dev
 
 # Step 5: Copy application code
-COPY app.js index.js ./
-
+COPY . .
 # Step 6: Start application
 EXPOSE 4000
 
