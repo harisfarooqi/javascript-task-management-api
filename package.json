@@ -1,0 +1,27 @@
+{
+  "name": "javascript-task-management-api",
+  "version": "1.0.0",
+  "description": "A Task Management REST API built with Node.js and Express.js for learning CI/CD using GitHub Actions.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "node --watch index.js",
+    "test": "node --test"
+  },
+  "keywords": [
+    "javascript",
+    "nodejs",
+    "express",
+    "api",
+    "devops",
+    "cicd"
+  ],
+  "author": "Haris",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^5.3.0"
+  },
+  "devDependencies": {
+    "supertest": "^7.3.1"
+  }
+}
