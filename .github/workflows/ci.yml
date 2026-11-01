@@ -36,7 +36,7 @@ jobs:
   # JOB 2: Build Docker Image and Push to Docker Hub
   docker:
     needs: test
-    if: github.event_name != 'push' && github.ref == 'refs/heads/main'
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
 
     steps:
@@ -63,7 +63,7 @@ jobs:
   # JOB 3: Deploy Application on Ubuntu Machine
   deploy:
     needs: docker
-    if: github.event_name != 'push' && github.ref == 'refs/heads/main'
+if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
     runs-on: self-hosted
 
     steps:
