@@ -4,11 +4,10 @@ on:
   push:
     branches:
       - main
-
   pull_request:
     branches:
       - main
-      workflow_disptch:
+  workflow_dispatch:
 
 jobs:
 
@@ -63,7 +62,7 @@ jobs:
   # JOB 3: Deploy Application on Ubuntu Machine
   deploy:
     needs: docker
-if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
     runs-on: self-hosted
 
     steps:
