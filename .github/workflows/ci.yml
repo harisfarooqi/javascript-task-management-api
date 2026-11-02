@@ -15,10 +15,10 @@ jobs:
   test:
     runs-on: ${{ matrix.os }}
     strategy:
-    matrix:
-      os:
-        - ubuntu-latest
-        - windows-latest
+      matrix:
+        os:
+          - ubuntu-latest
+          - windows-latest
 
     steps:
       - name: Checkout Code
@@ -61,7 +61,7 @@ jobs:
         with:
           context: .
           push: true
-          tags: harisfarooqui/task-management-api:latest
+          tags: harisfarooqi/task-management-api:latest
 
 
   # JOB 3: Deploy Application on Ubuntu Machine
@@ -72,7 +72,7 @@ jobs:
 
     steps:
       - name: Pull Latest Docker Image
-        run: docker pull harisfarooqui/task-management-api:latest
+        run: docker pull harisfarooqi/task-management-api:latest
 
       - name: Stop and Remove Old Container
         run: docker rm -f task-api-container || true
@@ -83,7 +83,7 @@ jobs:
             --name task-api-container \
             --restart unless-stopped \
             -p 4000:4000 \
-            harisfarooqui/task-management-api:latest
+            harisfarooqi/task-management-api:latest
 
       - name: Verify API
         run: |
